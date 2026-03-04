@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ORIONA | Empowering Refugee Youth</title>
+
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+    --primary:#1E3A8A;
+    --secondary:#06B6D4;
+    --accent:#F59E0B;
+    --light:#F8FAFC;
+    --dark:#0F172A;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins', sans-serif;
+}
+
+body{
+    background:var(--light);
+    color:var(--dark);
+    scroll-behavior:smooth;
+}
+
+/* Navbar */
+nav{
+    position:fixed;
+    width:100%;
+    background:white;
+    padding:15px 8%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    box-shadow:0 4px 20px rgba(0,0,0,0.05);
+    z-index:1000;
+}
+
+.brand{
+    display:flex;
+    align-items:center;
+}
+
+.brand img{
+    width:auto;
+    height:105px;
+    object-fit:contain;
+    border-radius:0;
+    display:block;
+}
+
+nav ul{
+    display:flex;
+    list-style:none;
+    gap:30px;
+}
+
+nav ul li a{
+    text-decoration:none;
+    color:var(--dark);
+    font-weight:500;
+    transition:0.3s;
+}
+
+nav ul li a:hover{
+    color:var(--secondary);
+}
+
+.btn{
+    padding:10px 22px;
+    background:var(--secondary);
+    color:white;
+    border:none;
+    border-radius:30px;
+    cursor:pointer;
+    transition:0.3s ease;
+}
+
+.btn:hover{
+    background:var(--primary);
+}
+
+/* Sections */
+section{
+    padding:120px 8% 80px 8%;
+}
+
+.hero{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    background:linear-gradient(120deg, #1E3A8A, #06B6D4);
+    color:white;
+}
+
+.hero-text{
+    max-width:600px;
+    animation:fadeIn 1.2s ease-in-out;
+}
+
+.hero h1{
+    font-size:3rem;
+    margin-bottom:20px;
+}
+
+.hero p{
+    margin-bottom:30px;
+    line-height:1.6;
+}
+
+.hero img{
+    width:450px;
+    animation:float 4s ease-in-out infinite;
+}
+
+/* Cards */
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:30px;
+}
+
+.card{
+    background:white;
+    padding:30px;
+    border-radius:15px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.05);
+    transition:0.4s ease;
+}
+
+.card:hover{
+    transform:translateY(-10px);
+}
+
+/* Forms */
+form{
+    display:grid;
+    gap:20px;
+    max-width:500px;
+}
+
+input, textarea{
+    padding:12px;
+    border-radius:8px;
+    border:1px solid #ddd;
+    outline:none;
+}
+
+input:focus, textarea:focus{
+    border-color:var(--secondary);
+}
+
+footer{
+    background:var(--dark);
+    color:white;
+    text-align:center;
+    padding:40px;
+    margin-top:60px;
+}
+
+/* Animations */
+@keyframes fadeIn{
+    from{opacity:0; transform:translateY(30px);}
+    to{opacity:1; transform:translateY(0);}
+}
+
+@keyframes float{
+    0%{transform:translateY(0px);}
+    50%{transform:translateY(-15px);}
+    100%{transform:translateY(0px);}
+}
+
+/* Responsive */
+@media(max-width:900px){
+    .hero{
+        flex-direction:column;
+        text-align:center;
+    }
+    .hero img{
+        width:300px;
+        margin-top:30px;
+    }
+    nav ul{
+        display:none;
+    }
+    .brand img{
+        width:36px;
+        height:90px;
+    }
+}
+
+</style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav>
+    <div class="brand"><img src="oriona-logo.jpeg" alt="Oriona logo"></div>
+    <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#programs">Programs</a></li>
+        <li><a href="#donate">Donate</a></li>
+        <li><a href="#volunteer">Volunteer</a></li>
+    </ul>
+    <button class="btn" onclick="scrollToDonate()">Donate</button>
+</nav>
+
+<!-- Hero Section -->
+<section class="hero">
+    <div class="hero-text">
+        <h1>Empowering Refugee Youth Through Mental Health & Community</h1>
+        <p>ORIONA is a refugee-led community organization fostering psycho-social support, education, creative expression and youth empowerment in Kakuma Refugee Camp.</p>
+        <button class="btn" onclick="scrollToVolunteer()">Join Us</button>
+    </div>
+    <img src="oriona-team.jpeg" alt="Youth Support">
+</section>
+
+<!-- About -->
+<section id="about">
+    <h2>About ORIONA</h2>
+    <br>
+    <p>
+       ORIONA is a refugee-led community organization committed to fostering psycho-social and
+mental health support, education, creative expressions, economic inclusion and community
+engagement. It serves as a bridge between refugee communities, host communities,
+organizations and stakeholders. We are committed to fostering collaboration, growth and
+empowerment. <br>
+With our operations based in refugee settings, we dedicate ourselves to the values of equity,
+inclusivity, professionalism, transparency and social impact.
+    </p>
+</section>
+
+<!-- Programs -->
+<section id="programs">
+    <h2>Our Programs</h2>
+    <br>
+    <div class="grid">
+        <div class="card">
+            <h3>Peer Counseling Clubs</h3>
+            <p>Safe and inclusive spaces for youth to openly share challenges and receive guided peer support.</p>
+        </div>
+        <div class="card">
+            <h3>Mental Health Education</h3>
+            <p>Life skills development, resilience building and mental wellness awareness programs.</p>
+        </div>
+        <div class="card">
+            <h3>Creative Expression</h3>
+            <p>Using art, storytelling and innovation as tools for emotional healing and empowerment.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Donate -->
+<section id="donate">
+    <h2>Support ORIONA</h2>
+    <br>
+    <p>ORIONA operates without external funding. For all payments and donations, please submit your details and we will contact you from orionaoffice@gmail.com with further directions.</p>
+    <br>
+    <form action="https://formsubmit.co/orionaoffice@gmail.com" method="POST">
+        <input type="hidden" name="_subject" value="ORIONA Donation Direction Request">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_template" value="table">
+        <input type="text" name="Full Name" placeholder="Full Name" required>
+        <input type="email" name="Email Address" placeholder="Email Address" required>
+        <input type="number" name="Donation Amount (USD)" placeholder="Donation Amount (USD)" required>
+        <button class="btn" type="submit">Request Donation Directions</button>
+    </form>
+</section>
+
+<!-- Volunteer -->
+<section id="volunteer">
+    <h2>Volunteer</h2>
+    <br>
+    <p>Become part of a growing youth-led movement committed to empowerment and inclusion.</p>
+    <br>
+    <form action="https://formsubmit.co/orionaoffice@gmail.com" method="POST">
+        <input type="hidden" name="_subject" value="New ORIONA Volunteer Submission">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_template" value="table">
+        <input type="text" name="Full Name" placeholder="Full Name" required>
+        <input type="email" name="Email Address" placeholder="Email Address" required>
+        <textarea rows="4" name="Volunteer Message" placeholder="Why would you like to volunteer?"></textarea>
+        <button class="btn" type="submit">Submit Application</button>
+    </form>
+</section>
+
+<!-- Footer -->
+<footer>
+    <p>© 2026 ORIONA | Kakuma Refugee Camp </p>
+    <p>Email: orionaoffice@gmail.com | Tel: +254 717 477 360</p>
+</footer>
+
+<script>
+function scrollToDonate(){
+    document.getElementById("donate").scrollIntoView({behavior:"smooth"});
+}
+function scrollToVolunteer(){
+    document.getElementById("volunteer").scrollIntoView({behavior:"smooth"});
+}
+</script>
+
+</body>
+</html>
