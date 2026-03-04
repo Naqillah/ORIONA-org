@@ -123,21 +123,6 @@ nav ul li a:hover{
     font-size:0.9rem;
 }
 
-.mode-toggle{
-    width:42px;
-    height:42px;
-    border:none;
-    border-radius:50%;
-    background:var(--dark);
-    color:white;
-    font-size:1.05rem;
-    cursor:pointer;
-    transition:0.3s ease;
-}
-
-.mode-toggle:hover{
-    background:var(--primary);
-}
 
 .btn{
     padding:10px 22px;
@@ -233,60 +218,6 @@ footer{
     margin-top:60px;
 }
 
-body.dark-mode{
-    background:#020617;
-    color:#e2e8f0;
-}
-
-body.dark-mode nav{
-    background:#0b1120;
-    box-shadow:0 4px 20px rgba(0,0,0,0.35);
-}
-
-body.dark-mode nav ul li a{
-    color:#e2e8f0;
-}
-
-body.dark-mode .lang-select{
-    background:#0f172a;
-    color:#e2e8f0;
-    border-color:#334155;
-}
-
-body.dark-mode .mode-toggle{
-    background:#f8fafc;
-    color:#0f172a;
-}
-
-/* Dark mode logo style (.dark compatibility + existing dark-mode) */
-.dark .logo-circle,
-body.dark-mode .logo-circle{
-    background-color:#1f2937;
-    border:2px solid #4b5563;
-    box-shadow:0 2px 10px rgba(0,0,0,0.4);
-}
-
-body.dark-mode .card{
-    background:#111827;
-    color:#e2e8f0;
-    box-shadow:0 10px 30px rgba(0,0,0,0.35);
-}
-
-body.dark-mode input,
-body.dark-mode textarea{
-    background:#0f172a;
-    color:#e2e8f0;
-    border-color:#334155;
-}
-
-body.dark-mode input::placeholder,
-body.dark-mode textarea::placeholder{
-    color:#94a3b8;
-}
-
-body.dark-mode footer{
-    background:#030712;
-}
 
 /* Animations */
 @keyframes fadeIn{
@@ -392,7 +323,6 @@ body.dark-mode footer{
             <option value="ar">Arabic</option>
             <option value="fr">French</option>
         </select>
-        <button id="theme-toggle" class="mode-toggle" type="button" aria-label="Toggle dark mode">🌙</button>
     </div>
 </nav>
 
@@ -675,15 +605,7 @@ function applyLanguage(lang){
 }
 
 const languageSelect = document.getElementById("language-select");
-const themeToggle = document.getElementById("theme-toggle");
 const savedLanguage = localStorage.getItem("oriona_lang") || "en";
-const savedTheme = localStorage.getItem("oriona_theme");
-
-if(savedTheme === "dark"){
-    document.body.classList.add("dark-mode");
-    document.documentElement.classList.add("dark");
-    themeToggle.textContent = "☀️";
-}
 
 languageSelect.value = savedLanguage;
 applyLanguage(savedLanguage);
@@ -692,13 +614,6 @@ languageSelect.addEventListener("change", function(event){
     const lang = event.target.value;
     localStorage.setItem("oriona_lang", lang);
     applyLanguage(lang);
-});
-
-themeToggle.addEventListener("click", function(){
-    const enabled = document.body.classList.toggle("dark-mode");
-    document.documentElement.classList.toggle("dark", enabled);
-    localStorage.setItem("oriona_theme", enabled ? "dark" : "light");
-    themeToggle.textContent = enabled ? "☀️" : "🌙";
 });
 </script>
 
