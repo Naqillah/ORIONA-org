@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ORIONA | Empowering Refugee Youth</title>
+<title id="page-title">ORIONA | Empowering Refugee Youth</title>
 
 <!-- Google Font -->
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
@@ -28,6 +28,7 @@ body{
     background:var(--light);
     color:var(--dark);
     scroll-behavior:smooth;
+    transition:background 0.25s ease, color 0.25s ease;
 }
 
 /* Navbar */
@@ -76,6 +77,37 @@ nav ul li a{
 
 nav ul li a:hover{
     color:var(--secondary);
+}
+
+.nav-controls{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.lang-select{
+    padding:9px 12px;
+    border:1px solid #d1d5db;
+    border-radius:22px;
+    background:white;
+    color:var(--dark);
+    font-size:0.9rem;
+}
+
+.mode-toggle{
+    width:42px;
+    height:42px;
+    border:none;
+    border-radius:50%;
+    background:var(--dark);
+    color:white;
+    font-size:1.05rem;
+    cursor:pointer;
+    transition:0.3s ease;
+}
+
+.mode-toggle:hover{
+    background:var(--primary);
 }
 
 .btn{
@@ -172,6 +204,53 @@ footer{
     margin-top:60px;
 }
 
+body.dark-mode{
+    background:#020617;
+    color:#e2e8f0;
+}
+
+body.dark-mode nav{
+    background:#0b1120;
+    box-shadow:0 4px 20px rgba(0,0,0,0.35);
+}
+
+body.dark-mode nav ul li a{
+    color:#e2e8f0;
+}
+
+body.dark-mode .lang-select{
+    background:#0f172a;
+    color:#e2e8f0;
+    border-color:#334155;
+}
+
+body.dark-mode .mode-toggle{
+    background:#f8fafc;
+    color:#0f172a;
+}
+
+body.dark-mode .card{
+    background:#111827;
+    color:#e2e8f0;
+    box-shadow:0 10px 30px rgba(0,0,0,0.35);
+}
+
+body.dark-mode input,
+body.dark-mode textarea{
+    background:#0f172a;
+    color:#e2e8f0;
+    border-color:#334155;
+}
+
+body.dark-mode input::placeholder,
+body.dark-mode textarea::placeholder{
+    color:#94a3b8;
+}
+
+body.dark-mode footer{
+    background:#030712;
+}
+
 /* Animations */
 @keyframes fadeIn{
     from{opacity:0; transform:translateY(30px);}
@@ -212,6 +291,10 @@ footer{
     nav .btn{
         width:100%;
         max-width:260px;
+    }
+    .nav-controls{
+        width:100%;
+        justify-content:center;
     }
     section{
         padding:180px 6% 72px 6%;
@@ -261,29 +344,39 @@ footer{
 <nav>
     <div class="brand"><img src="oriona-logo.jpeg" alt="Oriona logo"></div>
     <ul>
-        <li><a href="#about">About</a></li>
-        <li><a href="#programs">Programs</a></li>
-        <li><a href="#donate">Donate</a></li>
-        <li><a href="#volunteer">Volunteer</a></li>
+        <li><a href="#about" data-i18n="nav_about">About</a></li>
+        <li><a href="#programs" data-i18n="nav_programs">Programs</a></li>
+        <li><a href="#donate" data-i18n="nav_donate">Donate</a></li>
+        <li><a href="#volunteer" data-i18n="nav_volunteer">Volunteer</a></li>
     </ul>
-    <button class="btn" onclick="scrollToDonate()">Donate</button>
+    <button class="btn" onclick="scrollToDonate()" data-i18n="donate_cta">Donate</button>
+    <div class="nav-controls">
+        <select id="language-select" class="lang-select" aria-label="Language selector">
+            <option value="en">English</option>
+            <option value="sw">Kiswahili</option>
+            <option value="zh">Chinese</option>
+            <option value="ar">Arabic</option>
+            <option value="fr">French</option>
+        </select>
+        <button id="theme-toggle" class="mode-toggle" type="button" aria-label="Toggle dark mode">🌙</button>
+    </div>
 </nav>
 
 <!-- Hero Section -->
 <section class="hero">
     <div class="hero-text">
-        <h1>Empowering Refugee Youth Through Mental Health & Community</h1>
-        <p>ORIONA is a refugee-led community organization fostering psycho-social support, education, creative expression and youth empowerment in Kakuma Refugee Camp.</p>
-        <button class="btn" onclick="scrollToVolunteer()">Join Us</button>
+        <h1 data-i18n="hero_title">Empowering Refugee Youth Through Mental Health & Community</h1>
+        <p data-i18n="hero_desc">ORIONA is a refugee-led community organization fostering psycho-social support, education, creative expression and youth empowerment in Kakuma Refugee Camp.</p>
+        <button class="btn" onclick="scrollToVolunteer()" data-i18n="hero_join">Join Us</button>
     </div>
     <img src="oriona-team.jpeg" alt="Youth Support">
 </section>
 
 <!-- About -->
 <section id="about">
-    <h2>About ORIONA</h2>
+    <h2 data-i18n="about_title">About ORIONA</h2>
     <br>
-    <p>
+    <p data-i18n="about_desc">
        ORIONA is a refugee-led community organization committed to fostering psycho-social and
 mental health support, education, creative expressions, economic inclusion and community
 engagement. It serves as a bridge between refugee communities, host communities,
@@ -296,71 +389,281 @@ inclusivity, professionalism, transparency and social impact.
 
 <!-- Programs -->
 <section id="programs">
-    <h2>Our Programs</h2>
+    <h2 data-i18n="programs_title">Our Programs</h2>
     <br>
     <div class="grid">
         <div class="card">
-            <h3>Peer Counseling Clubs</h3>
-            <p>Safe and inclusive spaces for youth to openly share challenges and receive guided peer support.</p>
+            <h3 data-i18n="program_1_title">Peer Counseling Clubs</h3>
+            <p data-i18n="program_1_desc">Safe and inclusive spaces for youth to openly share challenges and receive guided peer support.</p>
         </div>
         <div class="card">
-            <h3>Mental Health Education</h3>
-            <p>Life skills development, resilience building and mental wellness awareness programs.</p>
+            <h3 data-i18n="program_2_title">Mental Health Education</h3>
+            <p data-i18n="program_2_desc">Life skills development, resilience building and mental wellness awareness programs.</p>
         </div>
         <div class="card">
-            <h3>Creative Expression</h3>
-            <p>Using art, storytelling and innovation as tools for emotional healing and empowerment.</p>
+            <h3 data-i18n="program_3_title">Creative Expression</h3>
+            <p data-i18n="program_3_desc">Using art, storytelling and innovation as tools for emotional healing and empowerment.</p>
         </div>
     </div>
 </section>
 
 <!-- Donate -->
 <section id="donate">
-    <h2>Support ORIONA</h2>
+    <h2 data-i18n="donate_title">Support ORIONA</h2>
     <br>
-    <p>ORIONA operates without external funding. For all payments and donations, please submit your details and we will contact you from orionaoffice@gmail.com with further directions.</p>
+    <p data-i18n="donate_desc">ORIONA operates without external funding. For all payments and donations, please submit your details and we will contact you from orionaoffice@gmail.com with further directions.</p>
     <br>
     <form action="https://formsubmit.co/orionaoffice@gmail.com" method="POST">
         <input type="hidden" name="_subject" value="ORIONA Donation Direction Request">
         <input type="hidden" name="_captcha" value="false">
         <input type="hidden" name="_template" value="table">
-        <input type="text" name="Full Name" placeholder="Full Name" required>
-        <input type="email" name="Email Address" placeholder="Email Address" required>
-        <input type="number" name="Donation Amount (USD)" placeholder="Donation Amount (USD)" required>
-        <button class="btn" type="submit">Request Donation Directions</button>
+        <input type="text" name="Full Name" placeholder="Full Name" data-i18n-placeholder="full_name" required>
+        <input type="email" name="Email Address" placeholder="Email Address" data-i18n-placeholder="email_address" required>
+        <input type="number" name="Donation Amount (USD)" placeholder="Donation Amount (USD)" data-i18n-placeholder="donation_amount" required>
+        <button class="btn" type="submit" data-i18n="donate_form_button">Request Donation Directions</button>
     </form>
 </section>
 
 <!-- Volunteer -->
 <section id="volunteer">
-    <h2>Volunteer</h2>
+    <h2 data-i18n="volunteer_title">Volunteer</h2>
     <br>
-    <p>Become part of a growing youth-led movement committed to empowerment and inclusion.</p>
+    <p data-i18n="volunteer_desc">Become part of a growing youth-led movement committed to empowerment and inclusion.</p>
     <br>
     <form action="https://formsubmit.co/orionaoffice@gmail.com" method="POST">
         <input type="hidden" name="_subject" value="New ORIONA Volunteer Submission">
         <input type="hidden" name="_captcha" value="false">
         <input type="hidden" name="_template" value="table">
-        <input type="text" name="Full Name" placeholder="Full Name" required>
-        <input type="email" name="Email Address" placeholder="Email Address" required>
-        <textarea rows="4" name="Volunteer Message" placeholder="Why would you like to volunteer?"></textarea>
-        <button class="btn" type="submit">Submit Application</button>
+        <input type="text" name="Full Name" placeholder="Full Name" data-i18n-placeholder="full_name" required>
+        <input type="email" name="Email Address" placeholder="Email Address" data-i18n-placeholder="email_address" required>
+        <textarea rows="4" name="Volunteer Message" placeholder="Why would you like to volunteer?" data-i18n-placeholder="volunteer_message"></textarea>
+        <button class="btn" type="submit" data-i18n="volunteer_form_button">Submit Application</button>
     </form>
 </section>
 
 <!-- Footer -->
 <footer>
-    <p>© 2026 ORIONA | Kakuma Refugee Camp </p>
-    <p>Email: orionaoffice@gmail.com | Tel: +254 717 477 360</p>
+    <p data-i18n="footer_line_1">&copy; 2026 ORIONA | Kakuma Refugee Camp</p>
+    <p data-i18n="footer_line_2">Email: orionaoffice@gmail.com | Tel: +254 717 477 360</p>
 </footer>
 
 <script>
 function scrollToDonate(){
     document.getElementById("donate").scrollIntoView({behavior:"smooth"});
 }
+
 function scrollToVolunteer(){
     document.getElementById("volunteer").scrollIntoView({behavior:"smooth"});
 }
+
+const translations = {
+    en: {
+        page_title: "ORIONA | Empowering Refugee Youth",
+        nav_about: "About",
+        nav_programs: "Programs",
+        nav_donate: "Donate",
+        nav_volunteer: "Volunteer",
+        donate_cta: "Donate",
+        hero_title: "Empowering Refugee Youth Through Mental Health & Community",
+        hero_desc: "ORIONA is a refugee-led community organization fostering psycho-social support, education, creative expression and youth empowerment in Kakuma Refugee Camp.",
+        hero_join: "Join Us",
+        about_title: "About ORIONA",
+        about_desc: "ORIONA is a refugee-led community organization committed to fostering psycho-social and mental health support, education, creative expressions, economic inclusion and community engagement. It serves as a bridge between refugee communities, host communities, organizations and stakeholders. We are committed to fostering collaboration, growth and empowerment. With our operations based in refugee settings, we dedicate ourselves to the values of equity, inclusivity, professionalism, transparency and social impact.",
+        programs_title: "Our Programs",
+        program_1_title: "Peer Counseling Clubs",
+        program_1_desc: "Safe and inclusive spaces for youth to openly share challenges and receive guided peer support.",
+        program_2_title: "Mental Health Education",
+        program_2_desc: "Life skills development, resilience building and mental wellness awareness programs.",
+        program_3_title: "Creative Expression",
+        program_3_desc: "Using art, storytelling and innovation as tools for emotional healing and empowerment.",
+        donate_title: "Support ORIONA",
+        donate_desc: "ORIONA operates without external funding. For all payments and donations, please submit your details and we will contact you from orionaoffice@gmail.com with further directions.",
+        volunteer_title: "Volunteer",
+        volunteer_desc: "Become part of a growing youth-led movement committed to empowerment and inclusion.",
+        donate_form_button: "Request Donation Directions",
+        volunteer_form_button: "Submit Application",
+        full_name: "Full Name",
+        email_address: "Email Address",
+        donation_amount: "Donation Amount (USD)",
+        volunteer_message: "Why would you like to volunteer?",
+        footer_line_1: "© 2026 ORIONA | Kakuma Refugee Camp",
+        footer_line_2: "Email: orionaoffice@gmail.com | Tel: +254 717 477 360"
+    },
+    sw: {
+        page_title: "ORIONA | Kuwawezesha Vijana Wakimbizi",
+        nav_about: "Kuhusu",
+        nav_programs: "Programu",
+        nav_donate: "Changia",
+        nav_volunteer: "Jitolee",
+        donate_cta: "Changia",
+        hero_title: "Kuwawezesha Vijana Wakimbizi Kupitia Afya ya Akili na Jamii",
+        hero_desc: "ORIONA ni shirika linaloongozwa na wakimbizi linalokuza msaada wa kisaikolojia, elimu, ubunifu na uwezeshaji wa vijana katika Kambi ya Wakimbizi ya Kakuma.",
+        hero_join: "Jiunge Nasi",
+        about_title: "Kuhusu ORIONA",
+        about_desc: "ORIONA ni shirika linaloongozwa na wakimbizi lililojitolea kukuza msaada wa kisaikolojia na afya ya akili, elimu, ubunifu, ujumuishaji wa kiuchumi na ushiriki wa jamii. Linatumika kama daraja kati ya jamii za wakimbizi, jamii mwenyeji, mashirika na wadau. Tumejitolea kukuza ushirikiano, ukuaji na uwezeshaji. Tukiwa tunafanya kazi katika maeneo ya wakimbizi, tunazingatia usawa, ujumuishi, taaluma, uwazi na athari chanya kwa jamii.",
+        programs_title: "Programu Zetu",
+        program_1_title: "Vilabu vya Ushauri Rika",
+        program_1_desc: "Maeneo salama na jumuishi kwa vijana kushiriki changamoto na kupata msaada wa rika ulioelekezwa.",
+        program_2_title: "Elimu ya Afya ya Akili",
+        program_2_desc: "Maendeleo ya stadi za maisha, kujenga uimara na programu za uhamasishaji wa afya ya akili.",
+        program_3_title: "Ubunifu wa Kujieleza",
+        program_3_desc: "Kutumia sanaa, hadithi na ubunifu kama zana za uponyaji wa kihisia na uwezeshaji.",
+        donate_title: "Saidia ORIONA",
+        donate_desc: "ORIONA inaendesha shughuli zake bila ufadhili wa nje. Kwa malipo na michango yote, tafadhali wasilisha taarifa zako nasi tutawasiliana nawe kupitia orionaoffice@gmail.com kwa maelekezo zaidi.",
+        volunteer_title: "Jitolee",
+        volunteer_desc: "Kuwa sehemu ya harakati inayokua, inayoongozwa na vijana na kujitolea kwa uwezeshaji na ujumuishi.",
+        donate_form_button: "Omba Maelekezo ya Kuchangia",
+        volunteer_form_button: "Tuma Ombi",
+        full_name: "Jina Kamili",
+        email_address: "Barua Pepe",
+        donation_amount: "Kiasi cha Mchango (USD)",
+        volunteer_message: "Kwa nini ungependa kujitolea?",
+        footer_line_1: "© 2026 ORIONA | Kambi ya Wakimbizi ya Kakuma",
+        footer_line_2: "Barua pepe: orionaoffice@gmail.com | Simu: +254 717 477 360"
+    },
+    zh: {
+        page_title: "ORIONA | 赋能难民青年",
+        nav_about: "关于",
+        nav_programs: "项目",
+        nav_donate: "捐赠",
+        nav_volunteer: "志愿者",
+        donate_cta: "捐赠",
+        hero_title: "通过心理健康与社区赋能难民青年",
+        hero_desc: "ORIONA 是由难民主导的社区组织，在卡库马难民营推动心理社会支持、教育、创意表达和青年赋能。",
+        hero_join: "加入我们",
+        about_title: "关于 ORIONA",
+        about_desc: "ORIONA 是由难民主导的社区组织，致力于心理社会与心理健康支持、教育、创意表达、经济融入和社区参与。我们连接难民社区、当地社区、组织和利益相关方，推动协作、成长与赋能。我们在难民环境中开展工作，坚守公平、包容、专业、透明和社会影响力。",
+        programs_title: "我们的项目",
+        program_1_title: "同伴辅导俱乐部",
+        program_1_desc: "为青年提供安全包容的空间，公开分享挑战并获得有指导的同伴支持。",
+        program_2_title: "心理健康教育",
+        program_2_desc: "开展生活技能、韧性建设和心理健康意识提升项目。",
+        program_3_title: "创意表达",
+        program_3_desc: "通过艺术、讲故事和创新促进情绪疗愈与赋能。",
+        donate_title: "支持 ORIONA",
+        donate_desc: "ORIONA 目前没有外部资助。若需付款或捐赠，请提交您的信息，我们将通过 orionaoffice@gmail.com 与您联系并提供后续指引。",
+        volunteer_title: "志愿服务",
+        volunteer_desc: "加入这个不断成长的青年主导行动，共同推动赋能与包容。",
+        donate_form_button: "获取捐赠指引",
+        volunteer_form_button: "提交申请",
+        full_name: "姓名",
+        email_address: "电子邮箱",
+        donation_amount: "捐赠金额（美元）",
+        volunteer_message: "您为什么想成为志愿者？",
+        footer_line_1: "© 2026 ORIONA | 卡库马难民营",
+        footer_line_2: "邮箱: orionaoffice@gmail.com | 电话: +254 717 477 360"
+    },
+    ar: {
+        page_title: "ORIONA | تمكين الشباب اللاجئين",
+        nav_about: "من نحن",
+        nav_programs: "البرامج",
+        nav_donate: "تبرع",
+        nav_volunteer: "تطوع",
+        donate_cta: "تبرع",
+        hero_title: "تمكين الشباب اللاجئين عبر الصحة النفسية والمجتمع",
+        hero_desc: "ORIONA منظمة مجتمعية يقودها لاجئون وتعزز الدعم النفسي والاجتماعي والتعليم والتعبير الإبداعي وتمكين الشباب في مخيم كاكوما للاجئين.",
+        hero_join: "انضم إلينا",
+        about_title: "حول ORIONA",
+        about_desc: "ORIONA منظمة يقودها لاجئون وتلتزم بتعزيز الدعم النفسي والاجتماعي والصحة النفسية والتعليم والتعبير الإبداعي والاندماج الاقتصادي والمشاركة المجتمعية. تعمل كجسر بين مجتمعات اللاجئين والمجتمعات المضيفة والمنظمات وأصحاب المصلحة. نحن ملتزمون بالتعاون والنمو والتمكين. ومن خلال عملنا في بيئات اللجوء نلتزم بالعدالة والشمولية والمهنية والشفافية والأثر الاجتماعي.",
+        programs_title: "برامجنا",
+        program_1_title: "نوادي الإرشاد الزملي",
+        program_1_desc: "مساحات آمنة وشاملة للشباب لمشاركة التحديات والحصول على دعم زملي موجَّه.",
+        program_2_title: "التثقيف بالصحة النفسية",
+        program_2_desc: "تنمية مهارات الحياة وبناء المرونة وبرامج التوعية بالصحة النفسية.",
+        program_3_title: "التعبير الإبداعي",
+        program_3_desc: "استخدام الفن والسرد والابتكار كأدوات للشفاء العاطفي والتمكين.",
+        donate_title: "ادعم ORIONA",
+        donate_desc: "تعمل ORIONA دون تمويل خارجي. لجميع المدفوعات والتبرعات، يرجى إرسال بياناتك وسنتواصل معك عبر orionaoffice@gmail.com لتزويدك بالتوجيهات.",
+        volunteer_title: "تطوع",
+        volunteer_desc: "كن جزءا من حركة شبابية متنامية تقود التمكين والشمول.",
+        donate_form_button: "طلب إرشادات التبرع",
+        volunteer_form_button: "إرسال الطلب",
+        full_name: "الاسم الكامل",
+        email_address: "البريد الإلكتروني",
+        donation_amount: "قيمة التبرع (دولار)",
+        volunteer_message: "لماذا ترغب في التطوع؟",
+        footer_line_1: "© 2026 ORIONA | مخيم كاكوما للاجئين",
+        footer_line_2: "البريد: orionaoffice@gmail.com | الهاتف: +254 717 477 360"
+    },
+    fr: {
+        page_title: "ORIONA | Autonomiser les jeunes refugies",
+        nav_about: "A propos",
+        nav_programs: "Programmes",
+        nav_donate: "Don",
+        nav_volunteer: "Benevolat",
+        donate_cta: "Don",
+        hero_title: "Autonomiser les jeunes refugies par la sante mentale et la communaute",
+        hero_desc: "ORIONA est une organisation communautaire dirigee par des refugies qui favorise le soutien psychosocial, l'education, l'expression creative et l'autonomisation des jeunes dans le camp de Kakuma.",
+        hero_join: "Rejoignez-nous",
+        about_title: "A propos d'ORIONA",
+        about_desc: "ORIONA est une organisation dirigee par des refugies, engagee pour le soutien psychosocial et en sante mentale, l'education, l'expression creative, l'inclusion economique et l'engagement communautaire. Elle fait le lien entre les communautes refugiees, les communautes d'accueil, les organisations et les partenaires. Nous encourageons la collaboration, la croissance et l'autonomisation. Dans les contextes de refuge, nous promouvons l'equite, l'inclusion, le professionnalisme, la transparence et l'impact social.",
+        programs_title: "Nos programmes",
+        program_1_title: "Clubs de conseil entre pairs",
+        program_1_desc: "Des espaces surs et inclusifs ou les jeunes partagent leurs defis et recoivent un soutien guide entre pairs.",
+        program_2_title: "Education en sante mentale",
+        program_2_desc: "Developpement des competences de vie, renforcement de la resilience et sensibilisation au bien-etre mental.",
+        program_3_title: "Expression creative",
+        program_3_desc: "Utiliser l'art, le recit et l'innovation pour la guerison emotionnelle et l'autonomisation.",
+        donate_title: "Soutenir ORIONA",
+        donate_desc: "ORIONA fonctionne sans financement externe. Pour tout paiement ou don, soumettez vos informations et nous vous contacterons via orionaoffice@gmail.com avec la marche a suivre.",
+        volunteer_title: "Benevolat",
+        volunteer_desc: "Faites partie d'un mouvement grandissant dirige par des jeunes pour l'autonomisation et l'inclusion.",
+        donate_form_button: "Demander les instructions de don",
+        volunteer_form_button: "Soumettre la candidature",
+        full_name: "Nom complet",
+        email_address: "Adresse e-mail",
+        donation_amount: "Montant du don (USD)",
+        volunteer_message: "Pourquoi souhaitez-vous faire du benevolat ?",
+        footer_line_1: "© 2026 ORIONA | Camp de refugies de Kakuma",
+        footer_line_2: "Email: orionaoffice@gmail.com | Tel: +254 717 477 360"
+    }
+};
+
+function applyLanguage(lang){
+    const selected = translations[lang] || translations.en;
+    document.documentElement.lang = lang;
+    document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
+    document.getElementById("page-title").textContent = selected.page_title;
+
+    document.querySelectorAll("[data-i18n]").forEach(function(node){
+        const key = node.getAttribute("data-i18n");
+        if(selected[key]){
+            node.textContent = selected[key];
+        }
+    });
+
+    document.querySelectorAll("[data-i18n-placeholder]").forEach(function(node){
+        const key = node.getAttribute("data-i18n-placeholder");
+        if(selected[key]){
+            node.placeholder = selected[key];
+        }
+    });
+}
+
+const languageSelect = document.getElementById("language-select");
+const themeToggle = document.getElementById("theme-toggle");
+const savedLanguage = localStorage.getItem("oriona_lang") || "en";
+const savedTheme = localStorage.getItem("oriona_theme");
+
+if(savedTheme === "dark"){
+    document.body.classList.add("dark-mode");
+    themeToggle.textContent = "☀️";
+}
+
+languageSelect.value = savedLanguage;
+applyLanguage(savedLanguage);
+
+languageSelect.addEventListener("change", function(event){
+    const lang = event.target.value;
+    localStorage.setItem("oriona_lang", lang);
+    applyLanguage(lang);
+});
+
+themeToggle.addEventListener("click", function(){
+    const enabled = document.body.classList.toggle("dark-mode");
+    localStorage.setItem("oriona_theme", enabled ? "dark" : "light");
+    themeToggle.textContent = enabled ? "☀️" : "🌙";
+});
 </script>
 
 </body>
