@@ -176,6 +176,40 @@ section{
     transform:translateY(-10px);
 }
 
+.document-card{
+    display:grid;
+    gap:14px;
+}
+
+.document-card p{
+    line-height:1.6;
+}
+
+.document-actions{
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+}
+
+.document-actions a{
+    text-decoration:none;
+}
+
+.btn-outline{
+    padding:10px 22px;
+    background:transparent;
+    color:var(--primary);
+    border:2px solid var(--primary);
+    border-radius:30px;
+    cursor:pointer;
+    transition:0.3s ease;
+}
+
+.btn-outline:hover{
+    background:var(--primary);
+    color:white;
+}
+
 /* Forms */
 form{
     display:grid;
@@ -288,6 +322,7 @@ footer{
     <div class="brand"><img src="oriona-logo.jpeg" alt="Oriona logo"></div>
     <ul>
         <li><a href="#about">About</a></li>
+        <li><a href="#documents">Documents</a></li>
         <li><a href="#programs">Programs</a></li>
         <li><a href="#donate">Donate</a></li>
         <li><a href="#volunteer">Volunteer</a></li>
@@ -356,6 +391,36 @@ inclusivity, professionalism, transparency and social impact.
             <h3>Membership</h3>
             <p>Membership is open to registered refugees and allies from host communities who support ORIONA's mission and objectives.</p>
             <p>Membership applications must be submitted through the organization's official website, registrar's office, or email.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Documents -->
+<section id="documents">
+    <h2>Organisation Documents</h2>
+    <br>
+    <p>Access ORIONA's official profile and annual report for a fuller picture of our work, priorities and impact.</p>
+    <br>
+    <div class="grid">
+        <div class="card document-card">
+            <div>
+                <h3>ORIONA Organisation Profile</h3>
+                <p>Learn about ORIONA's background, mission, structure and the communities we serve.</p>
+            </div>
+            <div class="document-actions">
+                <a class="btn" href="ORIONA_Organization_Profile.pdf" target="_blank" rel="noopener">Open Profile</a>
+                <a class="btn-outline" href="ORIONA_Organization_Profile.pdf" download>Download PDF</a>
+            </div>
+        </div>
+        <div class="card document-card">
+            <div>
+                <h3>ORIONA Annual Report 2026</h3>
+                <p>Review our annual highlights, progress, activities and accountability updates in the latest report.</p>
+            </div>
+            <div class="document-actions">
+                <a class="btn" href="ORIONA_Annual_Report_2026.pdf" target="_blank" rel="noopener">Open Report</a>
+                <a class="btn-outline" href="ORIONA_Annual_Report_2026.pdf" download>Download PDF</a>
+            </div>
         </div>
     </div>
 </section>
