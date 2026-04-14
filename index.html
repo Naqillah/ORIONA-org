@@ -215,6 +215,40 @@ section{
     transform:translateY(-10px);
 }
 
+.document-card{
+    display:grid;
+    gap:14px;
+}
+
+.document-card p{
+    line-height:1.6;
+}
+
+.document-actions{
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+}
+
+.document-actions a{
+    text-decoration:none;
+}
+
+.btn-outline{
+    padding:10px 22px;
+    background:transparent;
+    color:var(--primary);
+    border:2px solid var(--primary);
+    border-radius:30px;
+    cursor:pointer;
+    transition:0.3s ease;
+}
+
+.btn-outline:hover{
+    background:var(--primary);
+    color:white;
+}
+
 /* Forms */
 form{
     display:grid;
@@ -349,6 +383,7 @@ footer{
     </div>
     <ul>
         <li><a href="#about" data-i18n="nav_about">About</a></li>
+        <li><a href="#documents" data-i18n="nav_documents">Documents</a></li>
         <li><a href="#programs" data-i18n="nav_programs">Programs</a></li>
         <li><a href="#donate" data-i18n="nav_donate">Donate</a></li>
         <li><a href="#volunteer" data-i18n="nav_volunteer">Volunteer</a></li>
@@ -430,6 +465,36 @@ inclusivity, professionalism, transparency and social impact.
     </div>
 </section>
 
+<!-- Documents -->
+<section id="documents">
+    <h2 data-i18n="documents_title">Organisation Documents</h2>
+    <br>
+    <p data-i18n="documents_desc">Access ORIONA's official profile and annual report for a fuller picture of our work, priorities and impact.</p>
+    <br>
+    <div class="grid">
+        <div class="card document-card">
+            <div>
+                <h3 data-i18n="profile_title">ORIONA Organisation Profile</h3>
+                <p data-i18n="profile_desc">Learn about ORIONA's background, mission, structure and the communities we serve.</p>
+            </div>
+            <div class="document-actions">
+                <a class="btn" href="ORIONA_Organization_Profile.pdf" target="_blank" rel="noopener" data-i18n="open_profile">Open Profile</a>
+                <a class="btn-outline" href="ORIONA_Organization_Profile.pdf" download data-i18n="download_pdf">Download PDF</a>
+            </div>
+        </div>
+        <div class="card document-card">
+            <div>
+                <h3 data-i18n="report_title">ORIONA Annual Report 2026</h3>
+                <p data-i18n="report_desc">Review our annual highlights, progress, activities and accountability updates in the latest report.</p>
+            </div>
+            <div class="document-actions">
+                <a class="btn" href="ORIONA_Annual_Report_2026.pdf" target="_blank" rel="noopener" data-i18n="open_report">Open Report</a>
+                <a class="btn-outline" href="ORIONA_Annual_Report_2026.pdf" download data-i18n="download_pdf">Download PDF</a>
+            </div>
+        </div>
+    </div>
+</section>
+
 <!-- Programs -->
 <section id="programs">
     <h2 data-i18n="programs_title">Our Programs</h2>
@@ -503,6 +568,7 @@ const translations = {
     en: {
         page_title: "ORIONA | Empowering Refugee Youth",
         nav_about: "About",
+        nav_documents: "Documents",
         nav_programs: "Programs",
         nav_donate: "Donate",
         nav_volunteer: "Volunteer",
@@ -512,6 +578,15 @@ const translations = {
         hero_join: "Join Us",
         about_title: "About ORIONA",
         about_desc: "ORIONA is a refugee-led community organization committed to fostering psycho-social and mental health support, education, creative expressions, economic inclusion and community engagement. It serves as a bridge between refugee communities, host communities, organizations and stakeholders. We are committed to fostering collaboration, growth and empowerment. With our operations based in refugee settings, we dedicate ourselves to the values of equity, inclusivity, professionalism, transparency and social impact.",
+        documents_title: "Organisation Documents",
+        documents_desc: "Access ORIONA's official profile and annual report for a fuller picture of our work, priorities and impact.",
+        profile_title: "ORIONA Organisation Profile",
+        profile_desc: "Learn about ORIONA's background, mission, structure and the communities we serve.",
+        report_title: "ORIONA Annual Report 2026",
+        report_desc: "Review our annual highlights, progress, activities and accountability updates in the latest report.",
+        open_profile: "Open Profile",
+        open_report: "Open Report",
+        download_pdf: "Download PDF",
         programs_title: "Our Programs",
         program_1_title: "Peer Counseling Clubs",
         program_1_desc: "Safe and inclusive spaces for youth to openly share challenges and receive guided peer support.",
@@ -535,6 +610,7 @@ const translations = {
     sw: {
         page_title: "ORIONA | Kuwawezesha Vijana Wakimbizi",
         nav_about: "Kuhusu",
+        nav_documents: "Nyaraka",
         nav_programs: "Programu",
         nav_donate: "Changia",
         nav_volunteer: "Jitolee",
@@ -544,6 +620,15 @@ const translations = {
         hero_join: "Jiunge Nasi",
         about_title: "Kuhusu ORIONA",
         about_desc: "ORIONA ni shirika linaloongozwa na wakimbizi lililojitolea kukuza msaada wa kisaikolojia na afya ya akili, elimu, ubunifu, ujumuishaji wa kiuchumi na ushiriki wa jamii. Linatumika kama daraja kati ya jamii za wakimbizi, jamii mwenyeji, mashirika na wadau. Tumejitolea kukuza ushirikiano, ukuaji na uwezeshaji. Tukiwa tunafanya kazi katika maeneo ya wakimbizi, tunazingatia usawa, ujumuishi, taaluma, uwazi na athari chanya kwa jamii.",
+        documents_title: "Nyaraka za Shirika",
+        documents_desc: "Pata wasifu rasmi wa ORIONA na ripoti ya mwaka ili kuona kazi yetu, vipaumbele na athari yetu.",
+        profile_title: "Wasifu wa Shirika la ORIONA",
+        profile_desc: "Jifunze kuhusu historia ya ORIONA, dhamira yake, muundo wake na jamii tunazohudumia.",
+        report_title: "Ripoti ya Mwaka ya ORIONA 2026",
+        report_desc: "Angalia mafanikio ya mwaka, maendeleo, shughuli na taarifa za uwajibikaji katika ripoti ya hivi karibuni.",
+        open_profile: "Fungua Wasifu",
+        open_report: "Fungua Ripoti",
+        download_pdf: "Pakua PDF",
         programs_title: "Programu Zetu",
         program_1_title: "Vilabu vya Ushauri Rika",
         program_1_desc: "Maeneo salama na jumuishi kwa vijana kushiriki changamoto na kupata msaada wa rika ulioelekezwa.",
